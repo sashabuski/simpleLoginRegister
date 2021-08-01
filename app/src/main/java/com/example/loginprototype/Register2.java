@@ -3,6 +3,7 @@ package com.example.loginprototype;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class Register2 extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
                 registerUser();
             }
         });
@@ -99,7 +101,12 @@ public class Register2 extends AppCompatActivity {
                                 public void onComplete(@NonNull @NotNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
+
                                         Toast.makeText(Register2.this, "Account created.", Toast.LENGTH_LONG).show();
+                                        Intent intent;
+                                        intent = new Intent(Register2.this, MainActivity.class);
+                                        intent.putExtra("email", "logged in as: "+email);
+                                        startActivity(intent);
 
                                     }else{
                                         Toast.makeText(Register2.this, "Account creation failed.", Toast.LENGTH_LONG).show();

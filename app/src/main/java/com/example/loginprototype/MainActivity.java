@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
                 openSignIn();
             }
         });
+
+        Intent i = getIntent();
+        String displayEmail = i.getStringExtra("email");
+        ((TextView) findViewById(R.id.email)).setText(displayEmail);
     }
 
     public void openSignIn(){
